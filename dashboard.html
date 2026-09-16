@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Management - Dashboard</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+  <!-- Dashboard CSS -->
+  <link rel="stylesheet" href="styles/dashboard.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'cms-blue':      '#1a2a5e',
+            'cms-blue-mid':  '#1e3a7a',
+            'cms-blue-nav':  '#2563eb',
+            'cms-blue-light':'#eff6ff',
+            'cms-green':     '#10b981',
+            'cms-green-light':'#d1fae5',
+            'cms-orange':    '#f59e0b',
+            'cms-orange-light':'#fef9c3',
+            'cms-pink':      '#ec4899',
+            'cms-pink-light':'#fce7f3',
+            'cms-purple':    '#8b5cf6',
+            'cms-bg':        '#f1f5fb',
+          }
+        }
+      },
+      corePlugins: { preflight: false }
+    }
+  </script>
+</head>
+
+<body data-page="dashboard" class="bg-cms-bg">
+
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- Main -->
+  <div class="main-area">
+
+    <!-- Topbar -->
+    <div id="topbar-placeholder"></div>
+
+    <!-- Page Body -->
+    <main class="page-body">
+
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <div class="welcome-left">
+          <h2 class="welcome-title">
+            ☀️ Good Morning, Admin!
+          </h2>
+          <p class="welcome-sub">
+            Here's what's happening with your class management system today.
+          </p>
+        </div>
+        <div class="welcome-right">
+          <img src="images/banner.jpg" alt="Banner"
+            class="welcome-img"
+            onerror="this.style.display='none'">
+          <div class="welcome-date">
+            <p class="date-label">
+              📅 <span id="todayDate">Tue, 8 Jul 2026</span>
+            </p>
+            <p class="date-sub">Have a great day!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="row g-3 mb-4">
+
+        <div class="col-xl-3 col-md-6">
+          <div class="kpi-card kpi-blue">
+            <div class="kpi-left">
+              <div class="kpi-icon-wrap kpi-icon-blue">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div>
+                <p class="kpi-label">Total Students</p>
+                <h3 class="kpi-value" id="kpiStudents">124</h3>
+                <p class="kpi-change up">
+                  <i class="fa-solid fa-arrow-up"></i> 12%
+                  <span class="kpi-change-sub">vs. last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="kpi-card kpi-green">
+            <div class="kpi-left">
+              <div class="kpi-icon-wrap kpi-icon-green">
+                <i class="fa-solid fa-book-open"></i>
+              </div>
+              <div>
+                <p class="kpi-label">Total Courses</p>
+                <h3 class="kpi-value" id="kpiCourses">8</h3>
+                <p class="kpi-change up">
+                  <i class="fa-solid fa-arrow-up"></i> 2%
+                  <span class="kpi-change-sub">vs. last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="kpi-card kpi-orange">
+            <div class="kpi-left">
+              <div class="kpi-icon-wrap kpi-icon-orange">
+                <i class="fa-solid fa-credit-card"></i>
+              </div>
+              <div>
+                <p class="kpi-label">Total Payments</p>
+                <h3 class="kpi-value" id="kpiPayments">$ 2,480</h3>
+                <p class="kpi-change up">
+                  <i class="fa-solid fa-arrow-up"></i> 18%
+                  <span class="kpi-change-sub">vs. last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="kpi-card kpi-pink">
+            <div class="kpi-left">
+              <div class="kpi-icon-wrap kpi-icon-pink">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+              <div>
+                <p class="kpi-label">Attendance Rate</p>
+                <h3 class="kpi-value" id="kpiAttendance">92%</h3>
+                <p class="kpi-change up">
+                  <i class="fa-solid fa-arrow-up"></i> 5%
+                  <span class="kpi-change-sub">vs. last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Charts Row -->
+      <div class="row g-3 mb-4">
+
+        <!-- Student Overview Chart -->
+        <div class="col-xl-6">
+          <div class="cms-card h-100">
+            <div class="cms-card-header">
+              <h5 class="cms-card-title">Student Overview</h5>
+              <select class="cms-select" id="overviewRange">
+                <option>Last 7 months</option>
+                <option>Last 3 months</option>
+                <option>This year</option>
+              </select>
+            </div>
+            <div style="height:220px;">
+              <canvas id="studentOverviewChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Courses Distribution Chart -->
+        <div class="col-xl-3">
+          <div class="cms-card h-100">
+            <div class="cms-card-header">
+              <h5 class="cms-card-title">
+                📚 Courses Distribution
+              </h5>
+            </div>
+            <div class="donut-wrap-cms">
+              <canvas id="coursesChart"></canvas>
+              <div class="donut-center-cms">
+                <span class="donut-label-cms">Subjects</span>
+              </div>
+            </div>
+            <div class="courses-legend" id="coursesLegend">
+              <!-- injected by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="col-xl-3">
+          <div class="cms-card h-100">
+            <div class="cms-card-header">
+              <h5 class="cms-card-title">📅 Calendar</h5>
+              <a href="#" class="view-all-link">View All</a>
+            </div>
+            <div id="miniCalendar" class="mini-calendar">
+              <!-- injected by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Row -->
+      <div class="row g-3">
+
+        <!-- Recent Activities -->
+        <div class="col-xl-6">
+          <div class="cms-card">
+            <div class="cms-card-header">
+              <h5 class="cms-card-title">
+                🕐 Recent Activities
+              </h5>
+              <a href="#" class="view-all-link">View All</a>
+            </div>
+            <div class="activities-list" id="activitiesList">
+              <!-- injected by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="col-xl-6">
+          <div class="cms-card">
+            <div class="cms-card-header">
+              <h5 class="cms-card-title">⚡ Quick Actions</h5>
+            </div>
+            <div class="row g-2" id="quickActions">
+
+              <div class="col-6">
+                <button class="qa-card qa-blue w-100">
+                  <div class="qa-icon-wrap qa-icon-blue">
+                    <i class="fa-solid fa-user-plus"></i>
+                  </div>
+                  <div class="qa-text">
+                    <p class="qa-title">Add Student</p>
+                    <p class="qa-sub">Register a new student</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-right qa-arrow"></i>
+                </button>
+              </div>
+
+              <div class="col-6">
+                <button class="qa-card qa-green w-100">
+                  <div class="qa-icon-wrap qa-icon-green">
+                    <i class="fa-solid fa-book-medical"></i>
+                  </div>
+                  <div class="qa-text">
+                    <p class="qa-title">Add Course</p>
+                    <p class="qa-sub">Create a new course</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-right qa-arrow"></i>
+                </button>
+              </div>
+
+              <div class="col-6">
+                <button class="qa-card qa-purple w-100">
+                  <div class="qa-icon-wrap qa-icon-purple">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                  </div>
+                  <div class="qa-text">
+                    <p class="qa-title">Record Payment</p>
+                    <p class="qa-sub">Add student payment</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-right qa-arrow"></i>
+                </button>
+              </div>
+
+              <div class="col-6">
+                <button class="qa-card qa-orange w-100">
+                  <div class="qa-icon-wrap qa-icon-orange">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                  </div>
+                  <div class="qa-text">
+                    <p class="qa-title">Mark Attendance</p>
+                    <p class="qa-sub">Take attendance</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-right qa-arrow"></i>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Motivational Quote -->
+            <div class="quote-bar">
+              <i class="fa-solid fa-quote-left quote-icon"></i>
+              <p class="quote-text">
+                "Small steps every day lead to big results."
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/components.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
