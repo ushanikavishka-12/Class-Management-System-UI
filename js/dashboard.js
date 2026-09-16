@@ -28,10 +28,10 @@ function initStudentOverviewChart() {
       datasets: [{
         label: 'Students',
         data: [20, 40, 65, 72, 80, 110, 124],
-        borderColor: '#2563eb',
-        backgroundColor: 'rgba(37,99,235,0.07)',
+        borderColor: '#f59e0b',
+        backgroundColor: 'rgba(245,158,11,0.07)',
         borderWidth: 2.5,
-        pointBackgroundColor: '#2563eb',
+        pointBackgroundColor: '#f59e0b',
         pointRadius: 5,
         pointHoverRadius: 7,
         fill: true,
