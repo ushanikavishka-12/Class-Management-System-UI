@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Management - Students</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <!-- Dashboard CSS (shared: sidebar/topbar/footer + base styles) -->
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <!-- Students page CSS (page-specific additions) -->
+  <link rel="stylesheet" href="styles/students.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'cms-blue':      '#C2570B',
+            'cms-blue-mid':  '#A8480A',
+            'cms-accent':    '#E8935A',
+            'cms-blue-nav':  '#2563eb',
+            'cms-blue-light':'#eff6ff',
+            'cms-green':     '#10b981',
+            'cms-green-light':'#d1fae5',
+            'cms-orange':    '#f59e0b',
+            'cms-orange-light':'#fef9c3',
+            'cms-pink':      '#ec4899',
+            'cms-pink-light':'#fce7f3',
+            'cms-purple':    '#8b5cf6',
+            'cms-bg':        '#f1f5fb',
+          }
+        }
+      },
+      corePlugins: { preflight: false }
+    }
+  </script>
+</head>
+
+<body data-page="students" class="bg-cms-bg">
+
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- Main -->
+  <div class="main-area">
+
+    <!-- Topbar -->
+    <div id="topbar-placeholder"></div>
+
+    <!-- Page Body -->
+    <main class="page-body">
+
+      <!-- Page Header -->
+      <div class="page-header-banner">
+        <div class="page-header-left">
+          <h2 class="page-header-title">
+            <i class="fa-solid fa-users"></i> Students
+          </h2>
+          <p class="page-header-sub">Manage and view all students</p>
+        </div>
+        <div class="page-header-right">
+          <p class="breadcrumb-text">Home &gt; Students</p>
+          <p class="page-header-date">
+            📅 <span id="todayDate">Tue, 8 Jul 2026</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="row g-3 mb-4">
+
+        <div class="col-xl-3 col-md-6">
+          <div class="kpi-card kpi-blue">
+            <div class="kpi-left">
+              <div class="kpi-icon-wrap kpi-icon-blue">
+                <i class="fa-solid fa-user-graduate"></i>
+              </div>
+              <div>
+                <p class="kpi-label">Total Students</p>
+                <h3 class="kpi-value" id="statTotal">124</h3>
+                <p class="kpi-change up">
+                  <i class="fa-solid fa-arrow-up"></i> 3%
+                  <span class="kpi-change-sub">vs. last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="kpi-card kpi-green">
+            <div class="kpi-left">
+              <div class="kpi-icon-wrap kpi-icon-green">
+                <i class="fa-solid fa-user-check"></i>
+              </div>
+              <div>
+                <p class="kpi-label">Active Students</p>
+                <h3 class="kpi-value" id="statActive">118</h3>
+                <p class="kpi-change up">
+                  <i class="fa-solid fa-arrow-up"></i> 3%
+                  <span class="kpi-change-sub">vs. last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="kpi-card kpi-orange">
+            <div class="kpi-left">
+              <div class="kpi-icon-wrap kpi-icon-orange">
+                <i class="fa-solid fa-user-plus"></i>
+              </div>
+              <div>
+                <p class="kpi-label">New Students</p>
+                <h3 class="kpi-value" id="statNew">12</h3>
+                <p class="kpi-change up">
+                  <i class="fa-solid fa-arrow-up"></i> 32%
+                  <span class="kpi-change-sub">vs. last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="kpi-card kpi-purple">
+            <div class="kpi-left">
+              <div class="kpi-icon-wrap kpi-icon-purple">
+                <i class="fa-solid fa-chart-simple"></i>
+              </div>
+              <div>
+                <p class="kpi-label">Average Attendance</p>
+                <h3 class="kpi-value" id="statAttendance">92%</h3>
+                <p class="kpi-change up">
+                  <i class="fa-solid fa-arrow-up"></i> 1%
+                  <span class="kpi-change-sub">vs. last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Students List + New Enrollments -->
+      <div class="row g-3">
+
+        <!-- Students List -->
+        <div class="col-xl-9">
+          <div class="cms-card">
+            <div class="students-toolbar">
+              <h5 class="cms-card-title">Students List</h5>
+
+              <div class="students-filters">
+                <div class="table-search">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="tableSearch" placeholder="Search students...">
+                </div>
+                <select class="cms-select" id="courseFilter">
+                  <option value="all">All Courses</option>
+                </select>
+                <select class="cms-select" id="statusFilter">
+                  <option value="all">All Status</option>
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Inactive</option>
+                </select>
+                <button class="add-student-btn" id="openAddStudentBtn">
+                  <i class="fa-solid fa-plus"></i> Add Student
+                </button>
+              </div>
+            </div>
+
+            <div class="table-scroll">
+              <table class="students-table">
+                <thead>
+                  <tr>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Enrollment Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="studentsTableBody"><!-- Rendered by js/students.js --></tbody>
+              </table>
+            </div>
+
+            <div class="table-footer">
+              <span id="paginationSummary">Showing 1 to 7 of 7 students</span>
+              <div class="pagination-cms">
+                <button class="page-nav-cms" id="prevPage">&lt;</button>
+                <button class="page-num-cms active">1</button>
+                <button class="page-nav-cms" id="nextPage">&gt;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Enrollments -->
+        <div class="col-xl-3">
+          <div class="cms-card">
+            <div class="cms-card-header">
+              <h5 class="cms-card-title">New Enrollments</h5>
+              <a href="#" class="view-all-link">View All</a>
+            </div>
+            <div class="enrollments-list" id="enrollmentsList"><!-- Rendered by js/students.js --></div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+  </div>
+</div>
+
+<!-- ================= Add Student Modal ================= -->
+<div class="modal-overlay-cms" id="addStudentOverlay">
+  <div class="modal-box-cms">
+    <div class="modal-header-cms">
+      <h2>Add Student</h2>
+      <button class="modal-close-cms" id="closeAddStudentBtn">✕</button>
+    </div>
+
+    <form id="addStudentForm" novalidate>
+      <div class="form-group-cms">
+        <label for="fieldName">Student Name <span class="required-cms">*</span></label>
+        <input type="text" id="fieldName" placeholder="e.g. Kavindu Perera" required>
+      </div>
+
+      <div class="form-row-cms">
+        <div class="form-group-cms">
+          <label for="fieldEmail">Email <span class="required-cms">*</span></label>
+          <input type="email" id="fieldEmail" placeholder="student@gmail.com" required>
+        </div>
+        <div class="form-group-cms">
+          <label for="fieldSubject">Subject <span class="required-cms">*</span></label>
+          <select id="fieldSubject" required>
+            <option value="" disabled selected>Select subject</option>
+            <option>Mathematics</option>
+            <option>Science</option>
+            <option>English</option>
+            <option>History</option>
+            <option>ICT</option>
+            <option>Physics</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row-cms">
+        <div class="form-group-cms">
+          <label for="fieldEnrollmentDate">Enrollment Date <span class="required-cms">*</span></label>
+          <input type="date" id="fieldEnrollmentDate" required>
+        </div>
+        <div class="form-group-cms">
+          <label for="fieldStatus">Status</label>
+          <select id="fieldStatus">
+            <option value="Active" selected>Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="form-error-cms" id="addStudentError"></p>
+
+      <div class="modal-actions-cms">
+        <button type="button" class="btn-secondary-cms" id="cancelAddStudentBtn">Cancel</button>
+        <button type="submit" class="btn-primary-cms">Add Student</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/components.js"></script>
+<script src="js/students.js"></script>
+</body>
+</html>
