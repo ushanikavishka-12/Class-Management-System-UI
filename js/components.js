@@ -21,8 +21,8 @@ const FALLBACK = {
     <a href="students.html" class="nav-item" data-page="students">
       <i class="fa-solid fa-users"></i><span>Students</span>
     </a>
-    <a href="courses.html" class="nav-item" data-page="courses">
-      <i class="fa-solid fa-book-open"></i><span>Courses</span>
+    <a href="subjects.html" class="nav-item" data-page="subjects">
+      <i class="fa-solid fa-book-open"></i><span>Subjects</span>
     </a>
     <a href="payments.html" class="nav-item" data-page="payments">
       <i class="fa-solid fa-credit-card"></i><span>Payments</span>
