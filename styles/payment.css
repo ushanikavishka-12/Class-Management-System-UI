@@ -1,0 +1,161 @@
+/* ===== Payments page ===== */
+.payments-page {
+  padding: 16px 18px;
+  background: #fdebd3;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Header banner */
+.pay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #dbe6fb, #c7d8f6);
+}
+.pay-header-left { display: flex; align-items: center; gap: 12px; }
+.pay-header-icon {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  background: #fff; border-radius: 10px; font-size: 20px;
+}
+.pay-header h1 { margin: 0; font-size: 17px; color: #1d3f8a; }
+.pay-header p { margin: 2px 0 0; font-size: 12px; color: #33415c; }
+.pay-header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; font-size: 12px; font-weight: 600; color: #1f2937; }
+
+/* Summary cards */
+.pay-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.stat-card {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 16px; background: #fff; border-radius: 12px;
+}
+.stat-card small { display: block; font-size: 12px; color: #4b5563; margin-bottom: 4px; }
+.stat-card strong { font-size: 17px; color: #111827; }
+.stat-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 18px;
+}
+.stat-icon.blue   { background: #dbe8fb; }
+.stat-icon.green  { background: #d6f2df; }
+.stat-icon.purple { background: #e6dcfa; }
+.stat-icon.red    { background: #fbd9d6; }
+
+/* Body layout */
+.pay-body { display: grid; grid-template-columns: 1fr 250px; gap: 14px; align-items: start; }
+
+/* Payments list card */
+.pay-list-card { background: #fff; border-radius: 12px; padding: 20px; }
+.pay-list-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.pay-list-head h2 { margin: 0; font-size: 18px; color: #111827; }
+
+.btn-add {
+  background: #f97316; color: #fff; border: none;
+  padding: 10px 22px; border-radius: 6px;
+  font-weight: 600; font-size: 13px; cursor: pointer;
+}
+.btn-add:hover { background: #ea6a0a; }
+
+.pay-table { width: 100%; border-collapse: collapse; }
+.pay-table th {
+  text-align: left; font-size: 13px; color: #111827;
+  padding: 10px 8px; border-bottom: 1px solid #e5e7eb;
+}
+.pay-table td { padding: 14px 8px; font-size: 13px; color: #1f2937; border-bottom: 1px solid #f0f0f0; }
+.pay-table tr:last-child td { border-bottom: none; }
+.pay-empty { text-align: center; color: #6b7280; padding: 28px 8px !important; }
+
+.badge {
+  display: inline-block; min-width: 58px; text-align: center;
+  padding: 4px 12px; border-radius: 999px;
+  font-size: 11px; font-weight: 600;
+}
+.badge.paid    { background: #b9dc9d; color: #2d5a12; }
+.badge.pending { background: #e8c790; color: #7a4d0c; }
+.badge.overdue { background: #f9d0d0; color: #b42318; }
+
+.row-menu {
+  background: none; border: none; cursor: pointer;
+  color: #9ca3af; font-size: 16px; padding: 2px 6px; border-radius: 4px;
+}
+.row-menu:hover { color: #b42318; background: #fdecec; }
+
+/* Footer of the card */
+.pay-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; }
+.pay-footer small { font-size: 11px; color: #6b7280; }
+.pagination { display: flex; gap: 6px; }
+.pagination button {
+  width: 28px; height: 28px; border-radius: 6px;
+  border: 1px solid #d1d5db; background: #fff; color: #374151;
+  font-size: 12px; cursor: pointer;
+}
+.pagination button.active { background: #f97316; border-color: #f97316; color: #fff; }
+.pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Side panels */
+.pay-side { display: flex; flex-direction: column; gap: 14px; }
+.side-card { background: #fff; border-radius: 12px; padding: 16px; }
+.side-card h3 { margin: 0 0 12px; font-size: 13px; color: #111827; }
+
+.method {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 7px 10px; border-radius: 4px; margin-bottom: 8px;
+  font-size: 11px; color: #1f2937;
+}
+.method:last-child { margin-bottom: 0; }
+.m-card { background: #f0c08f; }
+.m-bank { background: #f6a3a3; color: #b42318; }
+.m-cash { background: #9db9e8; }
+
+.qa {
+  display: block; width: 100%; text-align: left;
+  padding: 8px 10px; margin-bottom: 8px;
+  border: none; border-radius: 4px;
+  font-size: 11px; color: #1f2937; cursor: pointer;
+}
+.qa:last-child { margin-bottom: 0; }
+.qa:hover { filter: brightness(0.95); }
+.qa-record  { background: #f0c08f; }
+.qa-remind  { background: #a3dc5c; }
+.qa-invoice { background: #aaa7d3; }
+
+/* Add payment dialog */
+.pay-dialog {
+  border: none; border-radius: 12px; padding: 22px;
+  width: min(380px, 92vw); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+.pay-dialog::backdrop { background: rgba(0, 0, 0, 0.4); }
+.pay-dialog h3 { margin: 0 0 14px; font-size: 17px; }
+.pay-dialog label { display: block; font-size: 12px; font-weight: 600; color: #374151; margin-bottom: 12px; }
+.pay-dialog input, .pay-dialog select {
+  display: block; width: 100%; margin-top: 4px; padding: 8px 10px;
+  border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; box-sizing: border-box;
+}
+.pay-dialog input:focus, .pay-dialog select:focus { outline: 2px solid #f97316; border-color: transparent; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+.btn-cancel {
+  background: #f3f4f6; color: #374151; border: none;
+  padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer;
+}
+
+/* Toast message */
+.pay-toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: #1f2937; color: #fff; padding: 10px 18px;
+  border-radius: 8px; font-size: 13px; z-index: 1000;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .pay-stats { grid-template-columns: repeat(2, 1fr); }
+  .pay-body { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .pay-stats { grid-template-columns: 1fr; }
+  .pay-header { flex-direction: column; align-items: flex-start; }
+  .pay-header-right { align-items: flex-start; }
+  .pay-list-card { overflow-x: auto; }
+}

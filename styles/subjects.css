@@ -141,6 +141,8 @@ body {
   font-weight: 700;
 }
 
+.nav-item.active span { color: #000; }
+
 /* Bottom decoration */
 .sidebar-bottom {
   padding-top: 16px;

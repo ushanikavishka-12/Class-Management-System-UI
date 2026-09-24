@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payments | Class Management System</title>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <!-- Keep these the same as students.html -->
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link rel="stylesheet" href="styles/payment.css">
+</head>
+<body data-page="payments">
+
+  <!-- Keep this layout the same as students.html (placeholder ids used by components.js) -->
+  <div class="app-layout">
+    <div id="sidebar-placeholder"></div>
+
+    <div class="main-area">
+      <div id="topbar-placeholder"></div>
+
+      <main class="payments-page">
+
+        <!-- Page header -->
+        <section class="pay-header">
+          <div class="pay-header-left">
+            <div class="pay-header-icon">💵</div>
+            <div>
+              <h1>Payment</h1>
+              <p>Manage and view all Payments</p>
+            </div>
+          </div>
+          <div class="pay-header-right">
+            <span>Home &gt; Students</span>
+            <span id="today-date"></span>
+          </div>
+        </section>
+
+        <!-- Summary cards -->
+        <section class="pay-stats">
+          <div class="stat-card">
+            <div><small>Total payments</small><strong id="stat-total">Rs. 0</strong></div>
+            <span class="stat-icon blue">💳</span>
+          </div>
+          <div class="stat-card">
+            <div><small>Paid</small><strong id="stat-paid">Rs. 0</strong></div>
+            <span class="stat-icon green">✅</span>
+          </div>
+          <div class="stat-card">
+            <div><small>Pending</small><strong id="stat-pending">Rs. 0</strong></div>
+            <span class="stat-icon purple">⏳</span>
+          </div>
+          <div class="stat-card">
+            <div><small>Overdue</small><strong id="stat-overdue">Rs. 0</strong></div>
+            <span class="stat-icon red">❗</span>
+          </div>
+        </section>
+
+        <!-- List + side panels -->
+        <section class="pay-body">
+
+          <div class="pay-list-card">
+            <div class="pay-list-head">
+              <h2>Payments list</h2>
+              <button class="btn-add" id="btn-add">+ Add payment</button>
+            </div>
+
+            <table class="pay-table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Grade</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="pay-tbody"></tbody>
+            </table>
+
+            <div class="pay-footer">
+              <small id="pay-showing"></small>
+              <div class="pagination" id="pagination"></div>
+            </div>
+          </div>
+
+          <aside class="pay-side">
+            <div class="side-card">
+              <h3>Payment methods</h3>
+              <div class="method m-card"><span>Card</span><b id="m-card">0</b></div>
+              <div class="method m-bank"><span>Bank transfer</span><b id="m-bank">0</b></div>
+              <div class="method m-cash"><span>Cash</span><b id="m-cash">0</b></div>
+            </div>
+
+            <div class="side-card">
+              <h3>⚡ Quick Actions</h3>
+              <button class="qa qa-record" id="qa-record">Record payment</button>
+              <button class="qa qa-remind" id="qa-remind">Send reminder</button>
+              <button class="qa qa-invoice" id="qa-invoice">View invoices</button>
+            </div>
+          </aside>
+
+        </section>
+      </main>
+
+      <div id="footer-placeholder"></div>
+    </div>
+  </div>
+
+  <!-- Add payment dialog -->
+  <dialog id="pay-dialog" class="pay-dialog">
+    <form id="pay-form" method="dialog">
+      <h3>Add payment</h3>
+
+      <label>Student name
+        <input type="text" id="f-name" required placeholder="e.g. Kavindu Perera">
+      </label>
+
+      <label>Grade
+        <select id="f-grade">
+          <option>Grade 6</option><option>Grade 7</option><option>Grade 8</option>
+          <option>Grade 9</option><option>Grade 10</option><option>Grade 11</option>
+        </select>
+      </label>
+
+      <label>Amount (Rs.)
+        <input type="number" id="f-amount" required min="1" placeholder="1500">
+      </label>
+
+      <label>Status
+        <select id="f-status">
+          <option>Paid</option><option>Pending</option><option>Overdue</option>
+        </select>
+      </label>
+
+      <label>Method
+        <select id="f-method">
+          <option value="card">Card</option>
+          <option value="bank">Bank transfer</option>
+          <option value="cash">Cash</option>
+        </select>
+      </label>
+
+      <div class="dialog-actions">
+        <button type="button" class="btn-cancel" id="btn-cancel">Cancel</button>
+        <button type="submit" class="btn-add">Save payment</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Keep the same order as students.html -->
+  <script src="js/components.js"></script>
+  <script src="js/payment.js"></script>
+</body>
+</html>
