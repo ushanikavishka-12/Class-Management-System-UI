@@ -78,10 +78,11 @@
 .badge.overdue { background: #f9d0d0; color: #b42318; }
 
 .row-menu {
-  background: none; border: none; cursor: pointer;
-  color: #9ca3af; font-size: 16px; padding: 2px 6px; border-radius: 4px;
+  background: #fdecec; border: 1px solid #f3b5b5; cursor: pointer;
+  color: #b42318; font-size: 13px; font-weight: 600;
+  width: 32px; height: 30px; padding: 0; border-radius: 4px;
 }
-.row-menu:hover { color: #b42318; background: #fdecec; }
+.row-menu:hover { color: #fff; background: #b42318; }
 
 /* Footer of the card */
 .pay-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; }
@@ -124,6 +125,7 @@
 
 /* Add payment dialog */
 .pay-dialog {
+  margin: auto;
   border: none; border-radius: 12px; padding: 22px;
   width: min(380px, 92vw); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
 }

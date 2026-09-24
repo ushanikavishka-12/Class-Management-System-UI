@@ -67,7 +67,7 @@ function renderTable() {
         <td>${escapeHtml(p.grade)}</td>
         <td>${money(p.amount)}</td>
         <td><span class="badge ${p.status.toLowerCase()}">${p.status}</span></td>
-        <td><button class="row-menu" data-index="${start + i}" title="Delete payment" aria-label="Delete payment">⋮</button></td>
+        <td><button class="row-menu" data-index="${start + i}" title="Delete payment" aria-label="Delete payment"><i class="fa-solid fa-trash-can" aria-hidden="true"></i></button></td>
       </tr>`).join("");
   }
 
