@@ -4,8 +4,8 @@
    ══════════════════════════════════════════════ */
 
 :root {
-  --orange:         #e87722;
-  --orange-dark:    #c96010;
+  --orange:         #9a3412;
+  --orange-dark:    #b1450f;
   --orange-light:   #fff4ec;
   --blue:           #3b82f6;
   --blue-light:     #eff6ff;
@@ -25,7 +25,7 @@
   --border:         #e2e8f0;
   --radius:         12px;
   --shadow:         0 2px 12px rgba(0,0,0,0.06);
-  --sidebar-w:      220px;
+  --sidebar-w:      230px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -58,7 +58,7 @@ body {
 ══════════════════════════ */
 .sidebar {
   width: var(--sidebar-w);
-  background: var(--orange);
+  background: linear-gradient(180deg, var(--orange-dark) 0%, var(--orange) 100%);
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -72,16 +72,16 @@ body {
 .sidebar-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 6px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  margin-bottom: 14px;
+  gap: 12px;
+  padding: 0 6px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 16px;
 }
 
 .brand-icon {
-  width: 42px;
-  height: 42px;
-  background: rgba(255,255,255,0.2);
+  width: 44px;
+  height: 44px;
+  background: #f97316;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -91,9 +91,9 @@ body {
   flex-shrink: 0;
 }
 
-.brand-text { display: flex; flex-direction: column; line-height: 1.2; }
-.brand-name { font-size: 13px; font-weight: 700; color: #fff; }
-.brand-sub  { font-size: 10px; color: rgba(255,255,255,0.75); }
+.brand-text { display: flex; flex-direction: column; line-height: 1.3; }
+.brand-name { font-size: 14px; font-weight: 700; color: #fff; }
+.brand-sub  { font-size: 10px; color: rgba(255,255,255,0.6); }
 
 .sidebar-nav {
   display: flex;
@@ -108,7 +108,7 @@ body {
   gap: 12px;
   padding: 11px 14px;
   border-radius: 10px;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.7);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -123,19 +123,21 @@ body {
 }
 
 .nav-item:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.08);
   color: #fff;
 }
 
 .nav-item.active {
-  background: rgba(255,255,255,0.25);
+  background: #f97316;
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
 }
 
+.nav-item.active span { color: #000; }
+
 .sidebar-bottom {
-  padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  padding: 16px 6px 4px;
+  border-top: 1px solid rgba(255,255,255,0.1);
   margin-top: 12px;
 }
 
@@ -279,14 +281,14 @@ body {
 
 /* Page Banner */
 .page-banner {
-  background: linear-gradient(135deg, #e8edf8 0%, #eef2fc 100%);
+  background: linear-gradient(135deg, #FFF3E0 0%, #FFE8D1 100%);
   border-radius: var(--radius);
   padding: 18px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  border: 1px solid #d4dcf0;
+  border: 1px solid #F5D6AE;
 }
 
 .banner-left {
@@ -298,18 +300,19 @@ body {
 .banner-icon {
   width: 50px;
   height: 50px;
-  background: var(--orange);
+  background: rgba(255,255,255,0.8);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  color: var(--orange);
 }
 
 .banner-date-num {
   font-size: 22px;
   font-weight: 800;
-  color: #fff;
+  color: var(--orange);
 }
 
 .banner-title {
