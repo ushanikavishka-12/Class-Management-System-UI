@@ -236,9 +236,42 @@ function generateReport(type) {
 }
 
 function downloadReport(name) {
-  // Wire this up to a real file download whenever ready
-  console.log("Download report:", name);
-  alert(`Downloading "${name}"... this is where a real file would download.`);
+  const reportName = (name || "Report").trim();
+  const matchingReport = detailedReports.find((r) => r.name === reportName) || null;
+
+  if (!window.jspdf || !window.jspdf.jsPDF) {
+    console.error("jsPDF library failed to load.");
+    alert("PDF export is not available right now.");
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFillColor(255, 244, 236);
+  doc.rect(0, 0, 210, 40, "F");
+  doc.setTextColor(154, 52, 18);
+  doc.setFontSize(18);
+  doc.text(reportName, 14, 22);
+
+  doc.setTextColor(30, 41, 59);
+  doc.setFontSize(11);
+  doc.text(`Generated: ${new Date().toLocaleString()}`, 14, 34);
+
+  const details = [
+    `Category: ${matchingReport ? matchingReport.category : "General"}`,
+    `Date: ${matchingReport ? formatDisplayDate(matchingReport.date) : new Date().toLocaleDateString()}`,
+    `Size: ${matchingReport ? matchingReport.size : "N/A"}`,
+    "",
+    "This PDF was generated from the Class Management System reports page."
+  ];
+
+  details.forEach((line, index) => {
+    doc.text(line, 14, 52 + index * 8);
+  });
+
+  const safeFileName = reportName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "report";
+  doc.save(`${safeFileName}.pdf`);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
