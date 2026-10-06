@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Management - Settings</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Settings page styles -->
+  <link rel="stylesheet" href="styles/settings.css">
+  <!-- Shared shell styles (loaded last so the shell matches every other page) -->
+  <link rel="stylesheet" href="styles/dashboard.css">
+
+  <script>
+    tailwind.config = { corePlugins: { preflight: false } }
+  </script>
+</head>
+
+<body data-page="settings">
+
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- Main -->
+  <div class="main-area">
+
+    <!-- Topbar -->
+    <div id="topbar-placeholder"></div>
+
+    <!-- Page body -->
+    <main class="page-body">
+
+      <!-- Page Banner -->
+      <div class="page-banner">
+        <div class="banner-left">
+          <div class="banner-icon">
+            <i class="fa-solid fa-gear"></i>
+          </div>
+          <div>
+            <h1 class="banner-title">⚙️ Settings</h1>
+            <p class="banner-sub">
+              Manage your system preferences and account settings
+            </p>
+          </div>
+        </div>
+        <div class="banner-right">
+          <p class="breadcrumb-text">Home &gt; Settings</p>
+          <p class="banner-date" id="bannerDate">📅 Tue, 8 Jul 2026</p>
+        </div>
+      </div>
+
+      <!-- Settings Layout -->
+      <div class="row g-3">
+
+        <!-- Left Sidebar Menu -->
+        <div class="col-xl-2 col-lg-3">
+          <div class="settings-menu">
+            <button class="settings-menu-item active" data-tab="general">
+              <i class="fa-solid fa-gear"></i>
+              General Settings
+            </button>
+            <button class="settings-menu-item" data-tab="profile">
+              <i class="fa-solid fa-user"></i>
+              Profile Settings
+            </button>
+            <button class="settings-menu-item" data-tab="notifications">
+              <i class="fa-solid fa-bell"></i>
+              Notifications
+            </button>
+            <button class="settings-menu-item" data-tab="security">
+              <i class="fa-solid fa-shield-halved"></i>
+              Security
+            </button>
+            <button class="settings-menu-item" data-tab="appearance">
+              <i class="fa-solid fa-palette"></i>
+              Appearance
+            </button>
+            <button class="settings-menu-item" data-tab="backup">
+              <i class="fa-solid fa-database"></i>
+              Backup &amp; Data
+            </button>
+          </div>
+        </div>
+
+        <!-- Center: Tab Content -->
+        <div class="col-xl-7 col-lg-6">
+          <div class="cms-card settings-content">
+
+            <!-- ── General Settings Tab ── -->
+            <div class="tab-pane active" id="tab-general">
+              <div class="tab-header">
+                <h5 class="tab-title">⚙️ General Settings</h5>
+                <p class="tab-sub">
+                  Configure basic system settings and preferences
+                </p>
+              </div>
+
+              <!-- System Information -->
+              <div class="settings-section">
+                <h6 class="section-title">System Information</h6>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>System Name</label>
+                      <input type="text" id="systemName"
+                        value="Class Management System">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>School / Organization</label>
+                      <input type="text" id="orgName"
+                        value="EGOTECH WORLD">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Academic Year</label>
+                      <input type="text" id="academicYear"
+                        value="2026 - 2027">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Timezone</label>
+                      <select id="timezone">
+                        <option selected>Asia/Colombo (GMT+5:30)</option>
+                        <option>Asia/Kolkata (GMT+5:30)</option>
+                        <option>UTC (GMT+0:00)</option>
+                        <option>America/New_York (GMT-5:00)</option>
+                        <option>Europe/London (GMT+0:00)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Institution Details -->
+              <div class="settings-section">
+                <h6 class="section-title">Institution Details</h6>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Address</label>
+                      <textarea id="address" rows="2">No. 123, Main Street,
+Colombo, Sri Lanka</textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Phone Number</label>
+                      <input type="tel" id="phone"
+                        value="+94 11 123 4567">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Email Address</label>
+                      <input type="email" id="email"
+                        value="info@egotechworld.com">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Display Preferences -->
+              <div class="settings-section">
+                <h6 class="section-title">Display Preferences</h6>
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Items per page</label>
+                      <input type="number" id="itemsPerPage"
+                        value="10" min="5" max="100">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Date format</label>
+                      <select id="dateFormat">
+                        <option selected>DD MMM YYYY</option>
+                        <option>MM/DD/YYYY</option>
+                        <option>YYYY-MM-DD</option>
+                        <option>DD/MM/YYYY</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Language</label>
+                      <select id="language">
+                        <option selected>English</option>
+                        <option>Sinhala</option>
+                        <option>Tamil</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="settings-actions">
+                <button class="btn-reset" id="resetBtn">
+                  <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+                <button class="btn-save" id="saveBtn">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                </button>
+              </div>
+
+            </div>
+
+            <!-- ── Profile Settings Tab ── -->
+            <div class="tab-pane" id="tab-profile">
+              <div class="tab-header">
+                <h5 class="tab-title">👤 Profile Settings</h5>
+                <p class="tab-sub">Update your personal account information</p>
+              </div>
+              <div class="settings-section">
+                <h6 class="section-title">Personal Information</h6>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Full Name</label>
+                      <input type="text" value="Admin User">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Email Address</label>
+                      <input type="email" value="admin@egotechworld.com">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Phone Number</label>
+                      <input type="tel" value="+94 77 123 4567">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Role</label>
+                      <input type="text" value="System Administrator" readonly>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="settings-actions">
+                <button class="btn-reset">
+                  <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+                <button class="btn-save">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                </button>
+              </div>
+            </div>
+
+            <!-- ── Notifications Tab ── -->
+            <div class="tab-pane" id="tab-notifications">
+              <div class="tab-header">
+                <h5 class="tab-title">🔔 Notifications</h5>
+                <p class="tab-sub">Manage your notification preferences</p>
+              </div>
+              <div class="settings-section">
+                <h6 class="section-title">Email Notifications</h6>
+                <div class="toggle-list">
+                  <div class="toggle-row">
+                    <div class="toggle-info">
+                      <p class="toggle-label">New Student Enrollment</p>
+                      <p class="toggle-sub">Get notified when a new student is enrolled</p>
+                    </div>
+                    <label class="toggle-switch">
+                      <input type="checkbox" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                  <div class="toggle-row">
+                    <div class="toggle-info">
+                      <p class="toggle-label">Payment Received</p>
+                      <p class="toggle-sub">Get notified when a payment is received</p>
+                    </div>
+                    <label class="toggle-switch">
+                      <input type="checkbox" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                  <div class="toggle-row">
+                    <div class="toggle-info">
+                      <p class="toggle-label">Attendance Marked</p>
+                      <p class="toggle-sub">Get notified when attendance is taken</p>
+                    </div>
+                    <label class="toggle-switch">
+                      <input type="checkbox">
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                  <div class="toggle-row">
+                    <div class="toggle-info">
+                      <p class="toggle-label">System Updates</p>
+                      <p class="toggle-sub">Get notified about system updates</p>
+                    </div>
+                    <label class="toggle-switch">
+                      <input type="checkbox" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="settings-actions">
+                <button class="btn-save">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                </button>
+              </div>
+            </div>
+
+            <!-- ── Security Tab ── -->
+            <div class="tab-pane" id="tab-security">
+              <div class="tab-header">
+                <h5 class="tab-title">🛡️ Security</h5>
+                <p class="tab-sub">Manage your account security settings</p>
+              </div>
+              <div class="settings-section">
+                <h6 class="section-title">Change Password</h6>
+                <div class="row g-3">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Current Password</label>
+                      <input type="password" placeholder="Enter current password">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>New Password</label>
+                      <input type="password" placeholder="Enter new password">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Confirm New Password</label>
+                      <input type="password" placeholder="Confirm new password">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="settings-section">
+                <h6 class="section-title">Two-Factor Authentication</h6>
+                <div class="toggle-list">
+                  <div class="toggle-row">
+                    <div class="toggle-info">
+                      <p class="toggle-label">Enable 2FA</p>
+                      <p class="toggle-sub">Add an extra layer of security to your account</p>
+                    </div>
+                    <label class="toggle-switch">
+                      <input type="checkbox">
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="settings-actions">
+                <button class="btn-save">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                </button>
+              </div>
+            </div>
+
+            <!-- ── Appearance Tab ── -->
+            <div class="tab-pane" id="tab-appearance">
+              <div class="tab-header">
+                <h5 class="tab-title">🎨 Appearance</h5>
+                <p class="tab-sub">Customize the look and feel of the system</p>
+              </div>
+              <div class="settings-section">
+                <h6 class="section-title">Theme</h6>
+                <div class="theme-options">
+                  <div class="theme-card selected" id="themeLight">
+                    <div class="theme-preview light-preview">
+                      <div class="preview-sidebar"></div>
+                      <div class="preview-content">
+                        <div class="preview-bar"></div>
+                        <div class="preview-card"></div>
+                      </div>
+                    </div>
+                    <p class="theme-label">
+                      <i class="fa-solid fa-sun"></i> Light
+                    </p>
+                  </div>
+                  <div class="theme-card" id="themeDark">
+                    <div class="theme-preview dark-preview">
+                      <div class="preview-sidebar dark"></div>
+                      <div class="preview-content dark">
+                        <div class="preview-bar dark"></div>
+                        <div class="preview-card dark"></div>
+                      </div>
+                    </div>
+                    <p class="theme-label">
+                      <i class="fa-solid fa-moon"></i> Dark
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="settings-section">
+                <h6 class="section-title">Sidebar Color</h6>
+                <div class="color-options">
+                  <div class="color-dot selected" style="background:#e87722;" title="Orange"></div>
+                  <div class="color-dot" style="background:#2563eb;" title="Blue"></div>
+                  <div class="color-dot" style="background:#10b981;" title="Green"></div>
+                  <div class="color-dot" style="background:#8b5cf6;" title="Purple"></div>
+                  <div class="color-dot" style="background:#1a2235;" title="Dark Navy"></div>
+                </div>
+              </div>
+              <div class="settings-actions">
+                <button class="btn-save">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                </button>
+              </div>
+            </div>
+
+            <!-- ── Backup & Data Tab ── -->
+            <div class="tab-pane" id="tab-backup">
+              <div class="tab-header">
+                <h5 class="tab-title">🗄️ Backup &amp; Data</h5>
+                <p class="tab-sub">Manage system data and backups</p>
+              </div>
+              <div class="settings-section">
+                <h6 class="section-title">Data Backup</h6>
+                <div class="backup-options">
+                  <div class="backup-item">
+                    <div class="backup-icon">
+                      <i class="fa-solid fa-download"></i>
+                    </div>
+                    <div class="backup-info">
+                      <p class="backup-title">Download Backup</p>
+                      <p class="backup-sub">Download a full backup of all system data</p>
+                    </div>
+                    <button class="btn-backup-action" id="downloadBackupBtn">
+                      Download
+                    </button>
+                  </div>
+                  <div class="backup-item">
+                    <div class="backup-icon restore">
+                      <i class="fa-solid fa-upload"></i>
+                    </div>
+                    <div class="backup-info">
+                      <p class="backup-title">Restore Data</p>
+                      <p class="backup-sub">Restore system from a backup file</p>
+                    </div>
+                    <button class="btn-backup-action" id="restoreBtn">
+                      Restore
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="settings-section">
+                <h6 class="section-title">Auto Backup</h6>
+                <div class="toggle-list">
+                  <div class="toggle-row">
+                    <div class="toggle-info">
+                      <p class="toggle-label">Enable Auto Backup</p>
+                      <p class="toggle-sub">Automatically backup data every day</p>
+                    </div>
+                    <label class="toggle-switch">
+                      <input type="checkbox" checked>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="col-xl-3 col-lg-3">
+
+          <!-- Quick Settings -->
+          <div class="cms-card mb-3">
+            <h5 class="cms-card-title mb-3">⚡ Quick Settings</h5>
+            <div class="quick-settings-list">
+              <button class="qs-item" data-tab="security">
+                <div class="qs-left">
+                  <i class="fa-solid fa-lock qs-icon qs-orange"></i>
+                  <div>
+                    <p class="qs-title">Change Password</p>
+                    <p class="qs-sub">Update your account password</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right qs-caret"></i>
+              </button>
+              <button class="qs-item" data-tab="notifications">
+                <div class="qs-left">
+                  <i class="fa-solid fa-envelope qs-icon qs-blue"></i>
+                  <div>
+                    <p class="qs-title">Email Notifications</p>
+                    <p class="qs-sub">Manage email preferences</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right qs-caret"></i>
+              </button>
+              <button class="qs-item" data-tab="appearance">
+                <div class="qs-left">
+                  <i class="fa-solid fa-gear qs-icon qs-green"></i>
+                  <div>
+                    <p class="qs-title">System Preferences</p>
+                    <p class="qs-sub">Configure system options</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right qs-caret"></i>
+              </button>
+              <button class="qs-item" data-tab="backup">
+                <div class="qs-left">
+                  <i class="fa-solid fa-database qs-icon qs-purple"></i>
+                  <div>
+                    <p class="qs-title">Data Backup</p>
+                    <p class="qs-sub">Download or restore data</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right qs-caret"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- System Information -->
+          <div class="cms-card">
+            <h5 class="cms-card-title mb-3">
+              <i class="fa-solid fa-circle-info"></i> System Information
+            </h5>
+            <div class="sys-info-list">
+              <div class="sys-row">
+                <span class="sys-label">Version</span>
+                <span class="sys-value">v1.0.0</span>
+              </div>
+              <div class="sys-row">
+                <span class="sys-label">Last Updated</span>
+                <span class="sys-value" id="sysDate">8 Jul 2026</span>
+              </div>
+              <div class="sys-row">
+                <span class="sys-label">Browser</span>
+                <span class="sys-value" id="sysBrowser">Chrome</span>
+              </div>
+              <div class="sys-row">
+                <span class="sys-label">Device</span>
+                <span class="sys-value" id="sysDevice">Windows</span>
+              </div>
+              <div class="sys-row">
+                <span class="sys-label">Status</span>
+                <span class="sys-value sys-online">
+                  <span class="online-dot"></span> Online
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/components.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>
