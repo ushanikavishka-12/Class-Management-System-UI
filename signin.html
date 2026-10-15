@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Management - Sign In</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/signin.css">
+</head>
+
+<body>
+
+  <!-- Top Nav -->
+  <nav class="top-nav">
+    <div class="top-nav-right">
+      <button class="btn-nav-login active">Sign in</button>
+      <button class="btn-nav-signup"
+        onclick="window.location.href='signup.html'">
+        Sign up
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Wrapper -->
+  <div class="page-wrap">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+
+      <!-- Brand -->
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Class Management</span>
+          <span class="brand-sub">System</span>
+        </div>
+      </div>
+
+      <!-- Headline -->
+      <div class="headline-wrap">
+        <h1 class="headline">
+          <span class="headline-orange">Welcome Back!</span><br>
+          <span class="headline-black">Sign In</span>
+          <span class="headline-orange"> to Your Account</span>
+        </h1>
+        <p class="headline-sub">
+          Access your classes, manage students, track
+          attendence and more - all in one place.
+        </p>
+      </div>
+
+      <!-- Feature Icons -->
+      <div class="features-row">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <span class="feature-label">Better<br>Communication</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fa-solid fa-chart-bar"></i>
+          </div>
+          <span class="feature-label">Improved<br>Performance</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fa-solid fa-user-gear"></i>
+          </div>
+          <span class="feature-label">Easy<br>Management</span>
+        </div>
+      </div>
+
+      <!-- Illustration Image -->
+      <div class="left-img-wrap">
+        <img src="images/study.jpeg"
+          alt="Student studying"
+          class="left-img"
+          onerror="this.style.display='none'">
+      </div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+
+      <div class="form-card">
+
+        <!-- Brand (right side) -->
+        <div class="form-brand">
+          <div class="form-brand-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="form-brand-text">
+            <span class="form-brand-name">Class Management</span>
+            <span class="form-brand-sub">System</span>
+          </div>
+        </div>
+
+        <form id="signinForm" novalidate autocomplete="off">
+
+          <!-- Email / Username -->
+          <div class="form-group" id="grp-email">
+            <label for="email">
+              Email Address or Username
+              <span class="required">*</span>
+            </label>
+            <div class="input-wrap">
+              <i class="fa-regular fa-envelope input-icon"></i>
+              <input type="text" id="email"
+                placeholder="Enter email or username">
+            </div>
+            <p class="err-msg" id="err-email">
+              Please enter your email or username.
+            </p>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group" id="grp-password">
+            <label for="password">
+              Password <span class="required">*</span>
+            </label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input type="password" id="password"
+                placeholder="Enter your password">
+              <button type="button" class="toggle-pass"
+                id="togglePass">
+                <i class="fa-regular fa-eye" id="passIcon"></i>
+              </button>
+            </div>
+            <p class="err-msg" id="err-password">
+              Please enter your password.
+            </p>
+          </div>
+
+          <!-- Remember + Forgot -->
+          <div class="options-row">
+            <label class="remember-wrap">
+              <input type="checkbox" id="rememberMe">
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-link">Forgot Password?</a>
+          </div>
+
+          <!-- Sign In Button -->
+          <button type="submit" class="btn-signin" id="signinBtn">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Sign In
+          </button>
+
+        </form>
+
+        <!-- Divider -->
+        <div class="divider"><span>OR</span></div>
+
+        <!-- Google Button -->
+        <button class="btn-google" type="button">
+          <svg width="20" height="20" viewBox="0 0 48 48">
+            <path fill="#EA4335"
+              d="M24 9.5c3.14 0 5.96 1.08 8.18 2.85l6.1-6.1
+                 C34.56 3.06 29.57 1 24 1 14.82 1 6.96 6.33 3.19
+                 14.09l7.1 5.52C12.07 13.34 17.58 9.5 24 9.5z"/>
+            <path fill="#4285F4"
+              d="M46.14 24.5c0-1.6-.14-3.13-.4-4.61H24v8.73h12.47
+                 c-.54 2.9-2.17 5.36-4.63 7.02l7.1 5.52
+                 C43.18 37.13 46.14 31.3 46.14 24.5z"/>
+            <path fill="#FBBC05"
+              d="M10.29 28.39A14.46 14.46 0 0 1 9.5 24
+                 c0-1.52.26-3 .79-4.39l-7.1-5.52
+                 A23.94 23.94 0 0 0 0 24c0 3.87.93 7.53 2.57
+                 10.78l7.72-6.39z"/>
+            <path fill="#34A853"
+              d="M24 47c5.57 0 10.25-1.84 13.67-5l-7.1-5.52
+                 c-1.84 1.23-4.18 1.96-6.57 1.96-6.42
+                 0-11.93-3.84-13.71-9.09l-7.72 6.39
+                 C6.96 41.67 14.82 47 24 47z"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        <!-- Sign Up Link -->
+        <p class="signup-link">
+          Don't have an account?
+          <a href="signup.html" class="link-orange">Sign up</a>
+        </p>
+
+        <!-- Security Note -->
+        <p class="security-note">
+          <i class="fa-solid fa-shield-halved"></i>
+          Your data is safe with us. We never share your information.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Footer (same as signup page) -->
+  <footer class="footer">
+    <div class="footer-content">
+
+      <div class="footer-brand-col">
+        <div class="footer-brand-name">EgoTECH World</div>
+        <p class="footer-brand-desc">
+          Developing ready made and custom solutions for modern challenges.
+        </p>
+      </div>
+
+      <div class="footer-nav-col">
+        <h5 class="footer-col-title">Navigation</h5>
+        <div class="footer-links-grid">
+          <div class="footer-links-col">
+            <a href="#">Home</a>
+            <a href="#">Job</a>
+            <a href="#">Services</a>
+          </div>
+          <div class="footer-links-col">
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
+            <a href="#">About</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider-v"></div>
+
+      <div class="footer-nav-col">
+        <h5 class="footer-col-title">Resources</h5>
+        <div class="footer-links-grid">
+          <div class="footer-links-col">
+            <a href="#">Documentation</a>
+            <a href="#">Pricing</a>
+            <a href="#">Support</a>
+          </div>
+          <div class="footer-links-col">
+            <a href="#">Privacy &amp; Policy</a>
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider-v"></div>
+
+      <div class="footer-social-col">
+        <h5 class="footer-col-title">Stay Connected</h5>
+        <div class="footer-social-icons">
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+        <p class="footer-follow">Follow Us</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 egotechworld.com &nbsp;&ndash;&nbsp;
+      EGOTECHWORLD PVT LTD | IT Solutions. All Rights Reserved.
+    </div>
+  </footer>
+
+<script src="js/signin.js"></script>
+</body>
+</html>
